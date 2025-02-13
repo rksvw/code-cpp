@@ -140,6 +140,27 @@ public:
             return;
         }
     }
+
+    int searchList(int srch) {
+        Node* temp = head;
+
+        if (temp == NULL) {
+            cout << "Empty List" << endl;
+            return -1;
+        }
+
+        for (int i = 0; temp != NULL; i++) {
+            if (temp->data == srch) {
+                return i;
+            }
+            temp = temp->next;
+        }
+
+        if (true) {
+            cout << srch << " is not in the List";
+            return -1;
+        }
+    }
 };
 
 int main()
@@ -176,6 +197,9 @@ int main()
     ll.insert(1100, 5);
     ll.printList();
     ll.insert(1900, -8);
+    ll.printList();
+    cout <<ll.searchList(80) << endl;
+    cout <<ll.searchList(1) << endl;
     ll.printList();
     return 0;
 }
