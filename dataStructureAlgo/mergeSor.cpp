@@ -1,65 +1,55 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-static int count = 0;
+
 void merge(vector<int> &nums, int st, int mid, int en) {
     vector<int> temp;
     int i = st, j = mid+1;
-    // Ignore bottom line loop
-    cout << "\n=============" << count << "=============\n" << endl;
-    for (int i = 0; i < nums.size(); i++) {
-        cout << nums[i] << " ";
-    }
-    cout << endl;
-    count++;
-    // Ignore top level loop
 
-    // Right Half
+    // Sort the vector using 2 pointer approach
     while(i <= mid && j <= en) {
         if (nums[i] <= nums[j]) {
             temp.push_back(nums[i]);
             i++;
-        }
-        else {
+        } else {
             temp.push_back(nums[j]);
             j++;
         }
     }
 
-    // Right Half
-    while (i <= mid) {
+    // Put the Sort value at right half of Temp Array
+    while(i <= mid) {
         temp.push_back(nums[i]);
         i++;
     }
 
-    // Left Half
-    while(j <= en)
-    {
+    // Put the Sort value at left half of Temp Array
+    while(j <= en) {
         temp.push_back(nums[j]);
         j++;
     }
 
+    // Copy the sorted Vector to Original Vector
     for (int idx = 0; idx < temp.size(); idx++) {
         nums[idx + st] = temp[idx];
     }
 }
 
 void mergeSort(vector<int> &nums, int st, int en) {
-    // Run until the start is less than end
-    if (st < en) {
-        // mid of vector
-        int mid = st + (en - st) / 2;
+    if(st < en) {
+        int mid = st + (en - st) /2;
 
         // Right Half Recursion Call
         mergeSort(nums, st, mid);
 
-        // Left Half Recursion Call
+        // Left half Recursion call
         mergeSort(nums, mid+1, en);
 
         // Merge the two half
         merge(nums, st, mid, en);
     }
 }
+
 
 int main() {
     vector<int> nums = {12, 31, 35, 8, 32, 17};
