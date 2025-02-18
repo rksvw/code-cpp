@@ -20,6 +20,7 @@ void getAllPartition(string str, vector<string> &partition, vector<vector<string
     for (int i = 0; i < str.size(); i++) {
         // cut the parts of string
         string parts = str.substr(0, i+1);
+        cout << parts << endl;
         // Check the cut partitions are palindrome
         if (isPalindrome(parts)) {
             // Add -> partitions
@@ -41,7 +42,7 @@ vector<vector<string>> palindromePartiton(string str) {
 }
 
 int main() {
-    string str = "aab";
+    string str = "abcaba";
     vector<vector<string>> palPart;
     palPart = palindromePartiton(str);
 
