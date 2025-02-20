@@ -161,6 +161,20 @@ public:
             return -1;
         }
     }
+
+    void reverseList() {
+        Node* next = NULL;
+        Node* curr = head;
+        Node* prev = NULL;
+
+        while(curr != NULL) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+       head = prev;
+    }
 };
 
 int main()
@@ -200,6 +214,8 @@ int main()
     ll.printList();
     cout <<ll.searchList(80) << endl;
     cout <<ll.searchList(1) << endl;
+    ll.printList();
+    ll.reverseList();
     ll.printList();
     return 0;
 }
