@@ -184,15 +184,39 @@ public:
         while(fast != NULL && fast->next != NULL) {
             fast = fast->next->next;
             slow = slow->next;
-            count++;
             if (slow == fast) {
-                cout << slow->data << endl;
-                cout << count-1 << endl;
                 return true;
             }
         }
 
         return false;
+    }
+
+    Node* listCycle() {
+        Node* fast = head;
+        Node* slow = head;
+        bool isCycle = false;
+
+        while(fast->next != NULL && fast != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (fast == slow) {
+                isCycle = true;
+                break;
+            }
+        }
+
+        if (!isCycle) {
+            return NULL;
+        }
+
+        slow = head;
+
+        while(slow != fast) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        return slow;
     }
 
     void makeCycle(int pos) {
@@ -219,6 +243,40 @@ public:
             count++;
         }
         return count;
+    }
+
+    void removeCycle() {
+        Node* fast = head;
+        Node* slow = head;
+        Node* prev = NULL;
+        bool isCycle = false;
+
+        while (fast->next != NULL && fast != NULL)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                isCycle = true;
+                break;
+            }
+        }
+
+        if (!isCycle) {
+            return ;
+        }
+
+        slow = head;
+
+        while (fast != slow)
+        {
+            slow = slow->next;
+            prev = fast;
+            fast = fast->next;
+        }
+
+        prev->next = NULL;
+        head = slow;
+        return;
     }
 };
 
@@ -274,6 +332,9 @@ int main()
     cout<<l2.middleList()<< endl;
     ll.makeCycle(3);
     ll.detectCycle();
+    cout << ((ll.listCycle())->data) << endl;
+    ll.removeCycle();
+    ll.printList();
 
 
     return 0;
