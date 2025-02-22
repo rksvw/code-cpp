@@ -175,6 +175,51 @@ public:
         }
        head = prev;
     }
+
+    bool detectCycle() {
+        Node* fast = head;
+        Node* slow = head;
+        int count = 0;
+
+        while(fast != NULL && fast->next != NULL) {
+            fast = fast->next->next;
+            slow = slow->next;
+            count++;
+            if (slow == fast) {
+                cout << slow->data << endl;
+                cout << count-1 << endl;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void makeCycle(int pos) {
+        Node* addr;
+        Node* temp = head;
+        while(temp->next != NULL) {
+            temp = temp->next;
+            pos--;
+            if (pos == 0) {
+                addr = temp;
+            }
+        }
+        temp->next = addr;
+        return;
+    }
+
+    int middleList() {
+        Node* fast = head;
+        Node* slow = head;
+        int count = 1;
+        while(fast->next != NULL && fast != NULL) {
+            fast = fast->next->next;
+            slow = slow->next;
+            count++;
+        }
+        return count;
+    }
 };
 
 int main()
@@ -217,5 +262,19 @@ int main()
     ll.printList();
     ll.reverseList();
     ll.printList();
+    cout << ll.middleList() << endl;
+
+    LinkedList l2;
+    l2.push_back(5);
+    l2.push_front(7);
+    l2.push_back(7);
+    l2.push_front(9);
+    l2.push_back(10);
+    l2.printList();
+    cout<<l2.middleList()<< endl;
+    ll.makeCycle(3);
+    ll.detectCycle();
+
+
     return 0;
 }
