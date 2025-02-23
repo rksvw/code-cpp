@@ -16,6 +16,7 @@ public:
 
 class LinkedList
 {
+private:
     Node *head;
     Node *tail;
 
@@ -23,6 +24,10 @@ public:
     LinkedList()
     {
         head = tail = NULL;
+    }
+    Node* tempHead() {
+        Node* temp = head;
+        return temp;
     }
 
     void push_front(int val)
@@ -280,6 +285,20 @@ public:
     }
 };
 
+Node* mergeTwoList(Node* head1, Node* head2) {
+    if (head1 == NULL || head2 == NULL) {
+        return head1 == NULL ? head2 : head1;
+    }
+
+    if (head1->data <= head2->data) {
+        head1->next = mergeTwoList(head1->next, head2);
+        return head1;
+    } else {
+        head2->next = mergeTwoList(head1, head2->next);
+        return head2;
+    }
+}
+
 int main()
 {
     LinkedList ll;
@@ -324,9 +343,9 @@ int main()
 
     LinkedList l2;
     l2.push_back(5);
-    l2.push_front(7);
+    l2.push_front(2);
     l2.push_back(7);
-    l2.push_front(9);
+    l2.push_front(1);
     l2.push_back(10);
     l2.printList();
     cout<<l2.middleList()<< endl;
@@ -335,7 +354,19 @@ int main()
     cout << ((ll.listCycle())->data) << endl;
     ll.removeCycle();
     ll.printList();
+    Node* newNode = mergeTwoList(ll.tempHead(), l2.tempHead());
 
+    if (newNode == NULL || !newNode) {
+        cout << "NULL Node" << endl;
+        return 0;
+    }
+
+    do {
+        cout << newNode->data << "->";
+        newNode = newNode->next;
+    } while(newNode != NULL);
+
+    cout << "NULL" << endl;
 
     return 0;
 }
