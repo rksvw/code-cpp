@@ -1,5 +1,21 @@
 #include <iostream>
+#include<unordered_map>
 using namespace std;
+
+class NodeR
+{
+public:
+    int data;
+    NodeR *next;
+    NodeR *random;
+
+    NodeR(int val)
+    {
+        data = val;
+        next = NULL;
+        random = NULL;
+    }
+};
 
 class Node
 {
@@ -19,6 +35,8 @@ class LinkedList
 private:
     Node *head;
     Node *tail;
+    NodeR *nHead;
+    NodeR *nTail;
 
 public:
     LinkedList()
@@ -296,6 +314,36 @@ Node* mergeTwoList(Node* head1, Node* head2) {
     } else {
         head2->next = mergeTwoList(head1, head2->next);
         return head2;
+    }
+}
+
+Node* copyRandomList(Node* head) {
+    if (head == NULL) {
+        return NULL;
+    }
+
+    unordered_map<Node*, Node*> m;
+
+    Node* newHead = new Node(head->data);
+    Node* oldTemp = head->next;
+    Node* newTemp = newHead;
+
+    while(oldTemp != NULL) {
+        Node* copyNode = new Node(oldTemp->data);
+        m[oldTemp] = copyNode;
+        newTemp->next = copyNode;
+
+        oldTemp = oldTemp->next;
+        newTemp = newTemp->next;
+    }
+
+    oldTemp = head;
+    newTemp = newHead;
+
+    while(oldTemp != NULL) {
+        newTemp->random = m[oldTemp->random];
+        oldTemp = oldTemp->next;
+        newTemp = newTemp->next;
     }
 }
 
