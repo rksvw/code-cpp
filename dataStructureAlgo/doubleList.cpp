@@ -77,6 +77,7 @@ public:
         cout << temp->data << endl;
         tail = temp->prev;
         tail->next = NULL;
+        temp->prev = NULL;
         delete temp;
     }
 
