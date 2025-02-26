@@ -341,7 +341,7 @@ Node* copyRandomList(Node* head) {
     newTemp = newHead;
 
     while(oldTemp != NULL) {
-        newTemp->random = m[oldTemp->random];
+        // newTemp->random = m[oldTemp->random];
         oldTemp = oldTemp->next;
         newTemp = newTemp->next;
     }
