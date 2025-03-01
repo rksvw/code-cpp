@@ -1,5 +1,5 @@
 #include <iostream>
-#include<unordered_map>
+#include <unordered_map>
 using namespace std;
 
 class NodeR
@@ -43,8 +43,9 @@ public:
     {
         head = tail = NULL;
     }
-    Node* tempHead() {
-        Node* temp = head;
+    Node *tempHead()
+    {
+        Node *temp = head;
         return temp;
     }
 
@@ -71,8 +72,8 @@ public:
         }
         else
         {
-           tail->next = newNode;
-           tail = newNode;
+            tail->next = newNode;
+            tail = newNode;
         }
     }
 
@@ -87,10 +88,13 @@ public:
         cout << "NULL" << endl;
     }
 
-    void pop_back() {
-        Node* temp = head;
-        while (temp != NULL) {
-            if (temp->next->next == NULL) {
+    void pop_back()
+    {
+        Node *temp = head;
+        while (temp != NULL)
+        {
+            if (temp->next->next == NULL)
+            {
                 cout << temp->next->data << endl;
                 // deleting the last node of node from the Heap memory
                 delete temp->next;
@@ -101,13 +105,16 @@ public:
         }
     }
 
-    void new_pop_back() {
-        if (head == NULL) {
+    void new_pop_back()
+    {
+        if (head == NULL)
+        {
             cout << "Empty List" << endl;
         }
-        Node* temp = head;
+        Node *temp = head;
 
-        while(temp->next != tail) {
+        while (temp->next != tail)
+        {
             temp = temp->next;
         }
         cout << tail->data << endl;
@@ -116,28 +123,34 @@ public:
         tail = temp;
     }
 
-    void insert(int val, int pos) {
-        Node* temp = head;
+    void insert(int val, int pos)
+    {
+        Node *temp = head;
         int flag = 0;
         int count = 0;
-        if (temp == NULL) {
+        if (temp == NULL)
+        {
             cout << "Empty List" << endl;
         }
-        if (pos < 0) {
+        if (pos < 0)
+        {
             cout << "Out off Stack" << endl;
             return;
         }
         // for 0th index
-        if (pos == 0) {
-            Node* newNode = new Node(val);
+        if (pos == 0)
+        {
+            Node *newNode = new Node(val);
             newNode->next = temp;
             head = newNode;
             flag = 1;
         }
         // for nth index
-        while(temp != tail) {
-            if (count == (pos - 1)) {
-                Node* newNode = new Node(val);
+        while (temp != tail)
+        {
+            if (count == (pos - 1))
+            {
+                Node *newNode = new Node(val);
                 newNode->next = temp->next;
                 temp->next = newNode;
                 flag = 1;
@@ -147,67 +160,82 @@ public:
             count += 1;
         }
 
-        if (!flag) {
+        if (!flag)
+        {
             cout << "Stack Overflow" << endl;
         }
     }
 
-    void pop_front() {
+    void pop_front()
+    {
         Node *temp = head;
-        if (temp != NULL) {
+        if (temp != NULL)
+        {
             cout << temp->data << endl;
             head = head->next;
             delete temp;
-        } else {
+        }
+        else
+        {
             cout << "Empty LinkedList" << endl;
             return;
         }
     }
 
-    int searchList(int srch) {
-        Node* temp = head;
+    int searchList(int srch)
+    {
+        Node *temp = head;
 
-        if (temp == NULL) {
+        if (temp == NULL)
+        {
             cout << "Empty List" << endl;
             return -1;
         }
 
-        for (int i = 0; temp != NULL; i++) {
-            if (temp->data == srch) {
+        for (int i = 0; temp != NULL; i++)
+        {
+            if (temp->data == srch)
+            {
                 return i;
             }
             temp = temp->next;
         }
 
-        if (true) {
+        if (true)
+        {
             cout << srch << " is not in the List";
             return -1;
         }
     }
 
-    void reverseList() {
-        Node* next = NULL;
-        Node* curr = head;
-        Node* prev = NULL;
+    void reverseList()
+    {
+        Node *next = NULL;
+        Node *curr = head;
+        Node *prev = NULL;
 
-        while(curr != NULL) {
+        while (curr != NULL)
+        {
             next = curr->next;
             curr->next = prev;
             prev = curr;
             curr = next;
         }
-       head = prev;
+        head = prev;
     }
 
-    bool detectCycle() {
-        Node* fast = head;
-        Node* slow = head;
+    bool detectCycle()
+    {
+        Node *fast = head;
+        Node *slow = head;
         int count = 0;
 
-        while(fast != NULL && fast->next != NULL) {
+        while (fast != NULL && fast->next != NULL)
+        {
             fast = fast->next->next;
             slow = slow->next;
-            if (slow == fast) {
+            if (slow == fast)
+            {
                 return true;
             }
         }
@@ -215,40 +243,48 @@ public:
         return false;
     }
 
-    Node* listCycle() {
-        Node* fast = head;
-        Node* slow = head;
+    Node *listCycle()
+    {
+        Node *fast = head;
+        Node *slow = head;
         bool isCycle = false;
 
-        while(fast->next != NULL && fast != NULL) {
+        while (fast->next != NULL && fast != NULL)
+        {
             slow = slow->next;
             fast = fast->next->next;
-            if (fast == slow) {
+            if (fast == slow)
+            {
                 isCycle = true;
                 break;
             }
         }
 
-        if (!isCycle) {
+        if (!isCycle)
+        {
             return NULL;
         }
 
         slow = head;
 
-        while(slow != fast) {
+        while (slow != fast)
+        {
             slow = slow->next;
             fast = fast->next;
         }
         return slow;
     }
 
-    void makeCycle(int pos) {
-        Node* addr;
-        Node* temp = head;
-        while(temp->next != NULL) {
+    void makeCycle(int pos)
+    {
+        Node *addr;
+        Node *temp = head;
+        while (temp->next != NULL)
+        {
             temp = temp->next;
             pos--;
-            if (pos == 0) {
+            if (pos == 0)
+            {
                 addr = temp;
             }
         }
@@ -256,11 +292,13 @@ public:
         return;
     }
 
-    int middleList() {
-        Node* fast = head;
-        Node* slow = head;
+    int middleList()
+    {
+        Node *fast = head;
+        Node *slow = head;
         int count = 1;
-        while(fast->next != NULL && fast != NULL) {
+        while (fast->next != NULL && fast != NULL)
+        {
             fast = fast->next->next;
             slow = slow->next;
             count++;
@@ -268,24 +306,27 @@ public:
         return count;
     }
 
-    void removeCycle() {
-        Node* fast = head;
-        Node* slow = head;
-        Node* prev = NULL;
+    void removeCycle()
+    {
+        Node *fast = head;
+        Node *slow = head;
+        Node *prev = NULL;
         bool isCycle = false;
 
         while (fast->next != NULL && fast != NULL)
         {
             slow = slow->next;
             fast = fast->next->next;
-            if (slow == fast) {
+            if (slow == fast)
+            {
                 isCycle = true;
                 break;
             }
         }
 
-        if (!isCycle) {
-            return ;
+        if (!isCycle)
+        {
+            return;
         }
 
         slow = head;
@@ -303,33 +344,41 @@ public:
     }
 };
 
-Node* mergeTwoList(Node* head1, Node* head2) {
-    if (head1 == NULL || head2 == NULL) {
+Node *mergeTwoList(Node *head1, Node *head2)
+{
+    if (head1 == NULL || head2 == NULL)
+    {
         return head1 == NULL ? head2 : head1;
     }
 
-    if (head1->data <= head2->data) {
+    if (head1->data <= head2->data)
+    {
         head1->next = mergeTwoList(head1->next, head2);
         return head1;
-    } else {
+    }
+    else
+    {
         head2->next = mergeTwoList(head1, head2->next);
         return head2;
     }
 }
 
-Node* copyRandomList(Node* head) {
-    if (head == NULL) {
+Node *copyRandomList(Node *head)
+{
+    if (head == NULL)
+    {
         return NULL;
     }
 
-    unordered_map<Node*, Node*> m;
+    unordered_map<Node *, Node *> m;
 
-    Node* newHead = new Node(head->data);
-    Node* oldTemp = head->next;
-    Node* newTemp = newHead;
+    Node *newHead = new Node(head->data);
+    Node *oldTemp = head->next;
+    Node *newTemp = newHead;
 
-    while(oldTemp != NULL) {
-        Node* copyNode = new Node(oldTemp->data);
+    while (oldTemp != NULL)
+    {
+        Node *copyNode = new Node(oldTemp->data);
         m[oldTemp] = copyNode;
         newTemp->next = copyNode;
 
@@ -340,7 +389,8 @@ Node* copyRandomList(Node* head) {
     oldTemp = head;
     newTemp = newHead;
 
-    while(oldTemp != NULL) {
+    while (oldTemp != NULL)
+    {
         // newTemp->random = m[oldTemp->random];
         oldTemp = oldTemp->next;
         newTemp = newTemp->next;
@@ -382,8 +432,8 @@ int main()
     ll.printList();
     ll.insert(1900, -8);
     ll.printList();
-    cout <<ll.searchList(80) << endl;
-    cout <<ll.searchList(1) << endl;
+    cout << ll.searchList(80) << endl;
+    cout << ll.searchList(1) << endl;
     ll.printList();
     ll.reverseList();
     ll.printList();
@@ -396,23 +446,25 @@ int main()
     l2.push_front(1);
     l2.push_back(10);
     l2.printList();
-    cout<<l2.middleList()<< endl;
+    cout << l2.middleList() << endl;
     ll.makeCycle(3);
     ll.detectCycle();
     cout << ((ll.listCycle())->data) << endl;
     ll.removeCycle();
     ll.printList();
-    Node* newNode = mergeTwoList(ll.tempHead(), l2.tempHead());
+    Node *newNode = mergeTwoList(ll.tempHead(), l2.tempHead());
 
-    if (newNode == NULL || !newNode) {
+    if (newNode == NULL || !newNode)
+    {
         cout << "NULL Node" << endl;
         return 0;
     }
 
-    do {
+    do
+    {
         cout << newNode->data << "->";
         newNode = newNode->next;
-    } while(newNode != NULL);
+    } while (newNode != NULL);
 
     cout << "NULL" << endl;
 
