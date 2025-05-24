@@ -20,13 +20,17 @@ static int idx = -1;
 Node *buildTree(vector<int> &preorder)
 {
     idx++;
+    // Check if the root is NULL
+    if (preorder[idx] == -1)
+    {
+        return NULL;
+    }
     Node *root = new Node(preorder[idx]);
 
-    // Check if the root is NULL
-    if (root->data == -1)
-    {
-        return root;
-    }
+    // if (root->data == -1)
+    // {
+    //     return root;
+    // }
 
     // Make Left SubTree
     root->left = buildTree(preorder);
@@ -39,9 +43,9 @@ Node *buildTree(vector<int> &preorder)
 
 void traverseTree(Node *root)
 {
-    if (root->data == -1)
+    if (root == NULL)
     {
-        cout << "-> " << root->data << endl;
+        cout << "-> NULL" << endl;
         return;
     }
 
