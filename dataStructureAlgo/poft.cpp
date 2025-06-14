@@ -5,7 +5,7 @@ bool isPowerOfTwo(int);
 
 int main()
 {
-    cout << isPowerOfTwo(1823987) << endl;
+    cout << isPowerOfTwo(34) << endl;
     return 0;
 }
 
