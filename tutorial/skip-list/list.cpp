@@ -36,7 +36,7 @@ public:
     SkipList()
     {
         level = 0;
-        header = new SkipNode<T>(T(), MAX_LEVEL);
+        header = new SkipNodecd<T>(T(), MAX_LEVEL);
     }
 
     int randomLevel()
