@@ -1,4 +1,4 @@
-let studentMarks = [20, 45, 30, 25, 50, 60, 75];
+let studentMarks = [20, 45, 30, 25, 50, 60, 75, 1];
 const sortStudentMarks = [20, 25, 30, 45, 50, 60, 75];
 
 function reverseList(list) {
@@ -110,3 +110,23 @@ console.log("\n");
 console.log(linearSearch(23, studentMarks));
 console.log("\n");
 console.log(binarySearch(60, sortStudentMarks));
+console.log("\n");
+
+function bubbleSort(list) {
+  const len = list.length;
+
+  for (let i = 0; i < len - 1; i++) {
+    for (let j = 0; j < len - i - 1; j++) {
+      if (list[j] > list[j + 1]) {
+        let temp = list[j];
+        list[j] = list[j + 1];
+        list[j + 1] = temp;
+      }
+    }
+  }
+
+  return list;
+}
+
+bubbleSort(studentMarks).forEach((item) => console.log(item));
+console.log("\n");
