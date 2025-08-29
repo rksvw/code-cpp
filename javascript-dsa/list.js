@@ -128,5 +128,19 @@ function bubbleSort(list) {
   return list;
 }
 
-bubbleSort(studentMarks).forEach((item) => console.log(item));
+function insertionSort(list) {
+  for (let i = 1; i < list.length; i++) {
+    let key = list[i];
+    let j = i - 1;
+
+    while (j >= 0 && list[j] > key) {
+      list[j + 1] = list[j];
+      j--;
+    }
+    list[j + 1] = key;
+  }
+  return list;
+}
+
+insertionSort([4, 1, 2, 7, 6, 3, 5]).forEach((item) => console.log(item));
 console.log("\n");
