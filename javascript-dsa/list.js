@@ -142,5 +142,21 @@ function insertionSort(list) {
   return list;
 }
 
-insertionSort([4, 1, 2, 7, 6, 3, 5]).forEach((item) => console.log(item));
+function selectionSort(list) {
+  for (let i = 0; i < list.length; i++) {
+    let minIdx = i;
+    for (let j = i + 1; j < list.length; j++) {
+      if (list[j] < list[minIdx]) {
+        minIdx = j;
+      }
+    }
+
+    let temp = list[i];
+    list[i] = list[minIdx];
+    list[minIdx] = temp;
+  }
+  return list;
+}
+
+selectionSort([4, 1, 2, 7, 6, 3, 5]).forEach((item) => console.log(item));
 console.log("\n");
