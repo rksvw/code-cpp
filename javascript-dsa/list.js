@@ -1,6 +1,3 @@
-let studentMarks = [20, 45, 30, 25, 50, 60, 75, 1];
-const sortStudentMarks = [20, 25, 30, 45, 50, 60, 75];
-
 function reverseList(list) {
   const len = list.length;
   let start = 0;
@@ -99,19 +96,6 @@ function binarySearch(target, list) {
   return -1;
 }
 
-rotateList(1, 3, studentMarks).forEach((item) => console.log(item));
-console.log("\n");
-reverseList(studentMarks).forEach((item) => console.log(item));
-console.log("\n");
-console.log(minItem(studentMarks));
-console.log("\n");
-console.log(maxItem(studentMarks));
-console.log("\n");
-console.log(linearSearch(23, studentMarks));
-console.log("\n");
-console.log(binarySearch(60, sortStudentMarks));
-console.log("\n");
-
 function bubbleSort(list) {
   const len = list.length;
 
@@ -158,5 +142,8 @@ function selectionSort(list) {
   return list;
 }
 
-selectionSort([4, 1, 2, 7, 6, 3, 5]).forEach((item) => console.log(item));
-console.log("\n");
+module.exports = {
+  bubbleSort,
+  selectionSort,
+  insertionSort,
+};

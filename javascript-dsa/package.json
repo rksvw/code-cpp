@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "vitest": "^3.2.4"
+  },
+  "name": "javascript-dsa",
+  "version": "1.0.0",
+  "main": "list.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
