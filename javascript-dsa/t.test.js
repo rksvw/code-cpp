@@ -1,5 +1,6 @@
 import { describe, test, it, expect } from "vitest";
 import { bubbleSort, insertionSort, selectionSort } from "./list";
+import { palindrome } from "./str";
 
 describe("Bubble Sort", () => {
   it("should return sorted list", () => {
@@ -46,5 +47,35 @@ describe("Insertion Sort", () => {
     const result = insertionSort(list);
 
     expect(result).toStrictEqual([-20, -5, 1, 2, 3, 5, 5, 6, 7, 8]);
+  });
+});
+
+describe("String Problem", () => {
+  it("WAP to check the string is a palindrome or not", () => {
+    const str = "racecar";
+    const result = palindrome(str);
+
+    expect(result).toBe(true);
+  });
+
+  it("WAP to check the string is a palindrome or not 2", () => {
+    const str = "RaCeCAr";
+    const result = palindrome(str);
+
+    expect(result).toBe(true);
+  });
+
+  it("WAP to check the string is a palindrome or not 3", () => {
+    const str = "milo";
+    const result = palindrome(str);
+
+    expect(result).toBe(false);
+  });
+
+  it("WAP to check the string is a palindrome or not 4", () => {
+    const str = "";
+    const result = palindrome(str);
+
+    expect(result).toBe(false);
   });
 });
