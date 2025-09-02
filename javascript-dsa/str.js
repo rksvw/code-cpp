@@ -1,5 +1,5 @@
 const palindrome = (str) => {
-  if (str.length === 0) {
+  if (str.length === 0 || Number(str) || Number(str[0])) {
     return false;
   }
 

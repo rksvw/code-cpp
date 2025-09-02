@@ -72,10 +72,24 @@ describe("String Problem", () => {
     expect(result).toBe(false);
   });
 
-  it("WAP to check the string is a palindrome or not 4", () => {
+  it("Check palindrome is Empty", () => {
     const str = "";
     const result = palindrome(str);
 
     expect(result).toBe(false);
   });
+
+  it("Check palindrome is Number", () => {
+    const str = 5;
+    const result = palindrome(str);
+
+    expect(result).toBe(false)
+  })
+
+  it("Check palindrome is Array of integer", () => {
+    const str = [1, 5, 9];
+    const result = palindrome(str);
+
+    expect(result).toBe(false)
+  })
 });
