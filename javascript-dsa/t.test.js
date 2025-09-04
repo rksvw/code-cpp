@@ -1,6 +1,6 @@
 import { describe, test, it, expect } from "vitest";
 import { bubbleSort, insertionSort, selectionSort } from "./list";
-import { palindrome } from "./str";
+import { palindrome, reverseString } from "./str";
 
 describe("Bubble Sort", () => {
   it("should return sorted list", () => {
@@ -93,3 +93,12 @@ describe("String Problem", () => {
     expect(result).toBe(false)
   })
 });
+
+describe("Reverse String", () => {
+  it("Sould reverse the string 'Meow' -> 'woeM' ", () => {
+    const str = "Meow";
+    const result = reverseString(str);
+
+    expect(result).toBe("woeM")
+  })
+})
