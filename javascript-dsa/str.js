@@ -88,4 +88,4 @@ longestSubStr("pwwkew");
 longestSubStr("dvdf");
 longestSubStr(" ");
 
-module.exports = { palindrome, reverseString };
+module.exports = { palindrome, reverseString, longestSubStr };

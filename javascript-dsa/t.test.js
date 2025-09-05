@@ -1,6 +1,6 @@
 import { describe, test, it, expect } from "vitest";
 import { bubbleSort, insertionSort, selectionSort } from "./list";
-import { palindrome, reverseString } from "./str";
+import { longestSubStr, palindrome, reverseString } from "./str";
 
 describe("Bubble Sort", () => {
   it("should return sorted list", () => {
@@ -83,15 +83,15 @@ describe("String Problem", () => {
     const str = 5;
     const result = palindrome(str);
 
-    expect(result).toBe(false)
-  })
+    expect(result).toBe(false);
+  });
 
   it("Check palindrome is Array of integer", () => {
     const str = [1, 5, 9];
     const result = palindrome(str);
 
-    expect(result).toBe(false)
-  })
+    expect(result).toBe(false);
+  });
 });
 
 describe("Reverse String", () => {
@@ -99,6 +99,54 @@ describe("Reverse String", () => {
     const str = "Meow";
     const result = reverseString(str);
 
-    expect(result).toBe("woeM")
+    expect(result).toBe("woeM");
+  });
+
+  it("Should reverse the string 'newcar' -> 'racwen' ", () => {
+    const str = "newcar";
+    const result = reverseString(str);
+
+    expect(result).toBe("racwen");
+  });
+});
+
+describe("Longest Substring without duplicates", () => {
+  it("Test 1 : 'abcabc' -> 3", () => {
+    const str = "abcabc";
+    const result = longestSubStr(str);
+
+    expect(result).toBe(3);
+  });
+
+  it("Test 2 : 'pwwkew' -> 3", () => {
+    const str = "pwwkew";
+    const result = longestSubStr(str);
+
+    expect(result).toBe(3);
+  });
+  it("Test 2 : 'dvdf' -> 3", () => {
+    const str = "dvdf";
+    const result = longestSubStr(str);
+
+    expect(result).toBe(3);
+  });
+  it("Test 2 : 'bbbbb' -> 1", () => {
+    const str = "bbbbb";
+    const result = longestSubStr(str);
+
+    expect(result).toBe(1);
+  });
+  it("Test 2 : ' ' -> 3", () => {
+    const str = " ";
+    const result = longestSubStr(str);
+
+    expect(result).toBe(1);
+  });
+  it("Test 2 : 'ldadkidcnjhska' -> 9", () => {
+    const str = 'ldadkidcnjhska';
+    const result = longestSubStr(str);
+
+    expect(result).toBe(9)
   })
-})
+
+});
