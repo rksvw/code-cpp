@@ -35,5 +35,28 @@ const nOfNFibonacci = (num) => {
   }
 };
 
-nOfNFibonacci(100);
-nOfNFactorial(100);
+// WAP to move the N-th disc from [source - destination] peg ( Tower of Hanoi )
+const towerOfHanoi = (n, sourcePeg, destinationPeg, auxilaryPeg) => {
+  if (n === 1) {
+    console.log(`Move disc 1 from ${sourcePeg} to ${destinationPeg}`);
+    return; // We're done with this base case
+  }
+
+  // Step 1: Move n-1 discs from Source to Auxiliary
+  towerOfHanoi(n - 1, sourcePeg, auxilaryPeg, destinationPeg);
+
+  // Step 2: Move the nth disc from Source to Destination
+  console.log(`Move disc ${n} from ${sourcePeg} to ${destinationPeg}`);
+
+  // Step 3: Move n-1 discs from Auxiliary to Destination
+  towerOfHanoi(n - 1, auxilaryPeg, destinationPeg, sourcePeg);
+};
+
+// nOfNFibonacci(100);
+// nOfNFactorial(100);
+towerOfHanoi(3, "A", "C", "B");
+
+module.exports = {
+  nOfNFactorial,
+  nOfNFibonacci,
+};
