@@ -1,6 +1,7 @@
 import { describe, test, it, expect } from "vitest";
 import { bubbleSort, insertionSort, selectionSort } from "./list";
 import { longestSubStr, palindrome, reverseString } from "./str";
+import { binarySearch } from "./recursion";
 
 describe("Bubble Sort", () => {
   it("should return sorted list", () => {
@@ -143,10 +144,46 @@ describe("Longest Substring without duplicates", () => {
     expect(result).toBe(1);
   });
   it("Test 2 : 'ldadkidcnjhska' -> 9", () => {
-    const str = 'ldadkidcnjhska';
+    const str = "ldadkidcnjhska";
     const result = longestSubStr(str);
 
-    expect(result).toBe(9)
-  })
-
+    expect(result).toBe(9);
+  });
 });
+
+describe("Binary Search Recursively", () => {
+  it("Search 2 return 1", () => {
+    const result = binarySearch(2, list, 0, list.length);
+
+    expect(result).toBe(1);
+  });
+
+  it("Search 30 return 29", () => {
+    const result = binarySearch(30, list, 0, list.length);
+
+    expect(result).toBe(29);
+  });
+
+  it("Search 26 return 25", () => {
+    const result = binarySearch(26, list, 0, list.length);
+
+    expect(result).toBe(25);
+  });
+
+  it("Search 21 return 20", () => {
+    const result = binarySearch(21, list, 0, list.length);
+
+    expect(result).toBe(20);
+  });
+
+  it("Search 37 return -1", () => {
+    const result = binarySearch(37, list, 0, list.length);
+
+    expect(result).toBe(-1);
+  });
+});
+
+const list = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+  23, 24, 25, 26, 27, 28, 29, 30,
+];

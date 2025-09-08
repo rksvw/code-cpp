@@ -52,11 +52,40 @@ const towerOfHanoi = (n, sourcePeg, destinationPeg, auxilaryPeg) => {
   towerOfHanoi(n - 1, auxilaryPeg, destinationPeg, sourcePeg);
 };
 
+// WAP to Search an element from list using Binary Search (RECURSIVE)
+const binarySearch = (tar, list, left, right) => {
+  const mid = (left + right) / 2;
+
+  if (tar === list[mid]) {
+    console.log("RESULT");
+    return mid;
+  } else if (tar < list[mid]) {
+    console.log("CHOOSE LEFT");
+    return binarySearch(tar, list, left, mid - 1);
+  } else if (tar > list[mid]) {
+    console.log("CHOOSE RIGHT");
+    return binarySearch(tar, list, mid + 1, right);
+  } else {
+    console.log("NOT FOUND");
+    return -1;
+  }
+};
+
+const list = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+  23, 24, 25, 26, 27, 28, 29, 30,
+];
 // nOfNFibonacci(100);
 // nOfNFactorial(100);
 towerOfHanoi(3, "A", "C", "B");
+console.log(binarySearch(2, list, 0, list.length));
+console.log(binarySearch(30, list, 0, list.length));
+console.log(binarySearch(26, list, 0, list.length));
+console.log(binarySearch(21, list, 0, list.length));
+console.log(binarySearch(37, list, 0, list.length));
 
 module.exports = {
   nOfNFactorial,
   nOfNFibonacci,
+  binarySearch
 };
